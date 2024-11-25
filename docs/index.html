@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="GAURA: Generalizable Approach for Unified Restoration and Rendering of Arbitrary Views">
+        content="	PhotonSplat: Splatting Photon for Scene Reconstruction with High-Speed Camera Captures">
   <meta name="keywords" content="GAURA, Radiance Fields, GenNeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GAURA: Generalizable Approach for Unified Restoration and Rendering of Arbitrary Views</title>
+  <title>	PhotonSplat: Splatting Photon for Scene Reconstruction with High-Speed Camera Captures</title>
   
   <!-- Global site tag (gtag.js) - Google Analytics
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
@@ -49,20 +49,23 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">GAURA: Generalizable Approach for Unified Restoration and Rendering of Arbitrary Views</h1>
+          <h1 class="title is-1 publication-title">	PhotonSplat: Splatting Photon for Scene Reconstruction with High-Speed Camera Captures</h1>
           <font size="+2" color="red">
-            ECCV 2024
+            Manuscript under progress
           </font>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://vinayak-vg.github.io/">Vinayak Gupta*</a><sup>1</sup>,</span>
+              <a href="https://vinayak-vg.github.io/">Sreevidya Chintalapati*</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://girish445ai.github.io/">Girish Rongali*</a><sup>1</sup>,</span>
+              <a href="https://girish445ai.github.io/">Sai Sri Teja Kuppa*</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://mukundvarmat.github.io/">Mukund Varma T*</a><sup>2</sup>,
+              <a href="https://mukundvarmat.github.io/">Vinayak Gupta</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://ayushtewari.com/">Ayush Tewari</a><sup>3</sup>,
+              <a href="https://ayushtewari.com/">Haejoon Lee</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ayushtewari.com/">Aswin Sankaranarayanan</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://www.ee.iitm.ac.in/kmitra/">Kaushik Mitra</a><sup>1</sup>
@@ -71,8 +74,7 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Indian Institute of Technology, Madras</span>
-            <span class="author-block"><sup>2</sup>University of California, San Diego</span>
-            <span class="author-block"><sup>3</sup>Massachusetts Institute of Technology</span>
+            <span class="author-block"><sup>2</sup>Carnagie Mellon University, Pittsberg</span>
           </div>
           <h4 class="subtitle has-text-centered">
             * indicates equal contribution.
@@ -103,7 +105,7 @@
              
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/Vinayak-VG/GAURA/"
+                <a href="https://github.com/Vinayak-VG/PhotonSplat"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -198,14 +200,11 @@
     <div class="hero-body">
       <img src="./static/images/teaserv5_page-0001.jpg" alt="Teaser Figure" id="fig-teaser" style="width: 100%"/>
       <h2 class="subtitle has-text-centered">
-        GAURA, can render and restore novel views from degraded input views. Unlike
-        previous attempts at this problem, we demonstrate generalization to different scenes
-        and degradation types. In each example, we visualize the imperfect target capture (on
-        the left) and its corresponding clear rendered view (on the right). Please note that the
-        imperfect view from the target viewing angle is not used as input for our method, and
-        we simply visualize the same for simplicity. GAURA faithfully recovers the underlying
-        3D scene with high geometric accuracy while still managing to generalize across several
-        degradation types
+        In applications such as drone surveillance with high-speed camera motion, RGB captures tend to be extremely blurry, making
+        it challenging to model the 3D structure accurately. To address this, we use Single Photon Camera (SPC) which captures high frame rate
+        binary images, free from motion blur. Our proposed method provides high-quality geometry reconstruction. We then colorise the grayscale
+        rendered images using one blurry RGB frame to achieve view-consistent colorization of the 3D structure. Finally, this process allows
+        appearance editing through explicit control over the scene.
       </h2>
     </div>
   </div>
@@ -219,11 +218,21 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Neural rendering methods can achieve near-photorealistic image synthesis of scenes from posed input images. However, when the images are imperfect, e.g., captured in very low-light conditions, state-of-the-art methods fail to reconstruct high-quality 3D scenes. 
-          </p>
-          <p>
-            Recent approaches have tried to address this limitation by modeling various degradation processes in the image formation model; however, this limits them to specific image degradations. In this paper, we propose a generalizable neural rendering method that can perform high-fidelity novel view synthesis under several degradations. Our method, GAURA, is learning-based and does not require any test-time scene-specific optimization. It is trained on a synthetic dataset that includes several degradation types.
-GAURA outperforms state-of-the-art methods on several benchmarks for low-light enhancement, dehazing, deraining, and on-par for motion deblurring. Further, our model can be efficiently fine-tuned to any new incoming degradation using minimal data. We thus demonstrate adaptation results on two unseen degradations, desnowing and removing defocus blur.
+            Neural rendering techniques can synthesize photorealistic novel-view images of scenes from a collection of 
+            multi-view imagery. However, they often fail when the input imagery is motion blurred, a scenario that often 
+            presents itself in high speed camera motion and object motion. In this paper, we advance neural rendering techniques
+            in high speed camera motion setting using single-photon avalanche diode (SPAD) arrays, an emerging sensing 
+            technology capable of sensing images at hundreds of thousands of frames per second. However, SPADs come with 
+            their own set of challenges: they produce binary frames that are inherently noisy, and the resulting averaged 
+            frames are blurry monochromatic images. For these monochromatic images the conventional 2D colorization methods 
+            yield inconsistent results. These limitations reduce the efficacy of SPAD data in downstream tasks such as depth 
+            estimation and segmentation. To address these challenges, we introduce \textbf{PhotonSplat}, a framework designed 
+            to reconstruct 3D scenes directly from SPAD binary images, effectively navigating the noise vs. blur trade-off. 
+            Our approach incorporates a 3D spatial filtering technique to reduce noise within novel-view reconstructions. 
+            Moreover, we extend this framework to support view-consistent colorization of grayscale reconstructions from a 
+            single blurred reference color image. Additionally, PhotonSplat facilitates simple editing tasks due to its 
+            explicit scene modeling capabilities. We further contribute \textit{PhotonScenes}, a real-world multi-view dataset 
+            captured with the SPAD sensors. 
           </p>
         </div>
       </div>
