@@ -204,13 +204,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/images/teaser_photonsplat.png" alt="Teaser Figure" id="fig-teaser" style="width: 100%"/>
+      <img src="./static/images/teaserv4.png" alt="Teaser Figure" id="fig-teaser" style="width: 100%"/>
       <h2 class="subtitle has-text-centered">
-        In applications such as drone surveillance with high-speed camera motion, RGB captures tend to be extremely blurry, making
-        it challenging to model the 3D structure accurately. To address this, we use Single Photon Camera (SPC) which captures high frame rate
-        binary images, free from motion blur. Our proposed method provides high-quality geometry reconstruction. We then colorise the grayscale
-        rendered images using one blurry RGB frame to achieve view-consistent colorization of the 3D structure. Finally, this process allows
-        appearance editing through explicit control over the scene.
+        In scenarios involving fast camera motion, such as drone surveillance, conventional RGB captures often suffer from severe motion blur, impeding accurate 3D structure modeling. To overcome this limitation, we employ Single-Photon Avalanche Diode (SPAD) camera arrays, which capture images at exceptionally high frame rates without motion blur. Our approach can successfully recover the underlying scene geometry from multi-view binary SPAD image captures. Furthermore, we demonstrate view-consistent colorization using either generative priors or a single blurry RGB image.
       </h2>
     </div>
   </div>
@@ -300,22 +296,28 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Neural rendering techniques can synthesize photorealistic novel-view images of scenes from a collection of 
-            multi-view imagery. However, they often fail when the input imagery is motion blurred, a scenario that often 
-            presents itself in high speed camera motion and object motion. In this paper, we advance neural rendering techniques
-            in high speed camera motion setting using single-photon avalanche diode (SPAD) arrays, an emerging sensing 
-            technology capable of sensing images at hundreds of thousands of frames per second. However, SPADs come with 
-            their own set of challenges: they produce binary frames that are inherently noisy, and the resulting averaged 
-            frames are blurry monochromatic images. For these monochromatic images the conventional 2D colorization methods 
-            yield inconsistent results. These limitations reduce the efficacy of SPAD data in downstream tasks such as depth 
-            estimation and segmentation. To address these challenges, we introduce \textbf{PhotonSplat}, a framework designed 
-            to reconstruct 3D scenes directly from SPAD binary images, effectively navigating the noise vs. blur trade-off. 
-            Our approach incorporates a 3D spatial filtering technique to reduce noise within novel-view reconstructions. 
-            Moreover, we extend this framework to support view-consistent colorization of grayscale reconstructions from a 
-            single blurred reference color image. Additionally, PhotonSplat facilitates simple editing tasks due to its 
-            explicit scene modeling capabilities. We further contribute \textit{PhotonScenes}, a real-world multi-view dataset 
-            captured with the SPAD sensors. 
+            Advances in 3D reconstruction have enabled high-quality 3D capture possible. 
+            However, they often fail when the input imagery is motion blurred, a scenario that occurs in the presence of cameras moving at high speed or object motion. 
+            In this paper, we advance neural rendering techniques in settings with cameras moving at high speed using single-photon avalanche diode (SPAD) arrays, 
+            an emerging sensing technology capable of sensing images at extremely high speeds. 
+            However, the use of SPADs presents its own set of unique challenges in the form of binary images, that are driven by stochastic photon arrivals. 
+            To address this, we introduce PhotonSplat, a framework designed to reconstruct 3D scenes directly from SPAD binary images, effectively navigating the noise vs. blur trade-off. 
+            Our approach incorporates a novel 3D spatial filtering technique to reduce noise in the renderings. 
+            The framework also supports both no-reference using generative priors and reference-based colorization from a single blurry image, enabling downstream applications such as segmentation, object detection and appearance editing tasks. 
+            Additionally, we extend our method to incorporate dynamic scene representations, making it suitable for scenes with moving objects. 
+            We further contribute PhotonScenes, a real-world multi-view dataset captured with the SPAD sensors. 
           </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <!-- https://youtu.be/97RZkAOWscU -->
+          <iframe src="https://www.youtube.com/embed/I_cusBpPTfA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     </div>
