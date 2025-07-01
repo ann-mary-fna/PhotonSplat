@@ -26,8 +26,6 @@
 
 2025.05.27: Our paper is accepted at ICCP 2025 🎉.
 
-2024.02.28: Update SIBR viewer guidance.
-
 ## Environmental Setups
 
 Please follow the [3D-GS](https://github.com/graphdeco-inria/gaussian-splatting) to install the relative packages.
