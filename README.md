@@ -33,11 +33,11 @@
 Please follow the [3D-GS](https://github.com/graphdeco-inria/gaussian-splatting) to install the relative packages.
 
 ```bash
-git clone https://github.com/hustvl/4DGaussians
-cd 4DGaussians
+git clone https://github.com/Vinayak-VG/PhotonSplat.git
+cd PhotonSplat
 git submodule update --init --recursive
-conda create -n Gaussians4D python=3.7 
-conda activate Gaussians4D
+conda create -n ps python=3.7 
+conda activate ps
 
 pip install -r requirements.txt
 pip install -e submodules/diff-gaussian-rasterization
