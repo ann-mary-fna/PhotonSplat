@@ -74,7 +74,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
             shs1 = pc.get_features[1]
             shs0 = RGB2SH(0.2990 * SH2RGB(pc.get_features[1][:, :, 0:1]) + 0.5870 * SH2RGB(pc.get_features[1][:, :, 1:2]) + 0.1140 * SH2RGB(pc.get_features[1][:, :, 2:3]).repeat(1,1,3))
             # shs0 = pc.get_features[0]
-            rendered_image, _, _ = rasterizer(
+            rendered_image, _= rasterizer(
                 means3D = means3D,
                 means2D = means2D,
                 shs = shs0,
@@ -84,7 +84,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
                 rotations = rotations,
                 cov3D_precomp = cov3D_precomp)
             
-            rendered_image_color, radii, _ = rasterizer(
+            rendered_image_color, radii = rasterizer(
                 means3D = means3D,
                 means2D = means2D,
                 shs = shs1,
@@ -116,7 +116,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
             shs1 = pc.get_features[1]
             shs0 = RGB2SH(0.2990 * SH2RGB(pc.get_features[1][:, :, 0:1]) + 0.5870 * SH2RGB(pc.get_features[1][:, :, 1:2]) + 0.1140 * SH2RGB(pc.get_features[1][:, :, 2:3]).repeat(1,1,3))
             # shs0 = pc.get_features[0]
-            rendered_image, radii, _ = rasterizer(
+            rendered_image, radii = rasterizer(
                 means3D = means3D,
                 means2D = means2D,
                 shs = shs0,
@@ -126,7 +126,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
                 rotations = rotations,
                 cov3D_precomp = cov3D_precomp)
 
-            rendered_image_color, _, _ = rasterizer(
+            rendered_image_color, _ = rasterizer(
                 means3D = means3D,
                 means2D = means2D,
                 shs = shs1,
@@ -172,7 +172,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
                 transformed_scales = scales * scales_delta
                 transformed_rotations = rotations * rotations_delta
 
-                rendered_image, radii, _ = rasterizer(
+                rendered_image, radii = rasterizer(
                     means3D = means3D,
                     means2D = means2D,
                     shs = shs,
@@ -197,7 +197,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
                 transformed_scales = scales * scales_delta[...,-1]
                 transformed_rotations = rotations * rotations_delta[...,-1]
 
-                rendered_image, _, _ = rasterizer(
+                rendered_image, _ = rasterizer(
                     means3D = pos,
                     means2D = means2D,
                     shs = shs0,
@@ -207,7 +207,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
                     rotations = transformed_rotations,
                     cov3D_precomp = cov3D_precomp)
 
-                rendered_image_color, _radii, _ = rasterizer(
+                rendered_image_color, _radii = rasterizer(
                     means3D = pos,
                     means2D = means2D,
                     shs = shs1,
@@ -245,7 +245,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, 
                     #     rotations = transformed_rotations,
                     #     cov3D_precomp = cov3D_precomp)
 
-                    rendered_image_color_, _radii, _ = rasterizer(
+                    rendered_image_color_, _radii = rasterizer(
                         means3D = transformed_pos,
                         means2D = means2D,
                         shs = shs1,

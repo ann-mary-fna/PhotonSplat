@@ -6,7 +6,10 @@ import torch
 import torch.nn as nn
 from torchvision import models
 
-from .utils import normalize_activation
+import sys
+sys.path.append('/content/PhotonSplat/lpipsPyTorch/modules')
+
+from utils_test import normalize_activation
 
 
 def get_network(net_type: str):
